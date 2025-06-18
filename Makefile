@@ -6,13 +6,15 @@ NAME := libft.a
 
 # Compiler Settings
 CC := cc
-CFLAGS := -Wall -Wextra -Werror
+CFLAGS := -Wall -Wextra -Werror -MMD
 AR := ar rcs
 RM := rm -rf
 
-# SRCS and OBJS
+# Directories
 OBJ_DIR := obj
 DEP_DIR := dep
+
+#Header
 
 HEADER = libft.h
 
