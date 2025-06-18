@@ -17,6 +17,10 @@ DEP_DIR := dep
 #Header
 HEADER = libft.h
 
+# ----------------------
+# Sources and Objects
+# ----------------------
+
 SRCS_MANDATORY := $(filter-out %_bonus.c, $(wildcard *.c))
 OBJS_MANDATORY := $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS_MANDATORY))
 DEPS_MANDATORY := $(patsubst %.c, $(DEP_DIR)/%.d, $(SRCS_MANDATORY))
