@@ -21,12 +21,14 @@ HEADER = libft.h
 # Sources and Objects
 # ----------------------
 
-SRCS_MANDATORY := $(filter-out %_bonus.c, $(wildcard *.c))
-OBJS_MANDATORY := $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS_MANDATORY))
-DEPS_MANDATORY := $(patsubst %.c, $(DEP_DIR)/%.d, $(SRCS_MANDATORY))
+SRCS := $(wildcard *.c)
+SRCS_MANDATORY := $(filter-out %_bonus.c, $(SRCS))
+SRCS_BONUS := $(filter %_bonus.c, $(SRCS))
 
-SRCS_BONUS := $(filter %_bonus.c, $(wildcard *.c))
+OBJS_MANDATORY := $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS_MANDATORY))
 OBJS_BONUS := $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS_BONUS))
+
+DEPS_MANDATORY := $(patsubst %.c, $(DEP_DIR)/%.d, $(SRCS_MANDATORY))
 DEPS_BONUS := $(patsubst %.c, $(DEP_DIR)/%.d, $(SRCS_BONUS))
 
 # Color for output
