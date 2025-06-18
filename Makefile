@@ -63,20 +63,21 @@ $(OBJ_DIR) $(DEP_DIR):
 # ----------------------
 
 clean:
-	@$(RM) $(OBJ_DIR) $(DEP_DIR)
-	@for obj in $(OBJS_MANDATORY) $(OBJS_BONUS); do \
-		sleep 0.1; \
-	done
-	@echo $(RED)"All object files of libft have been deleted. ✓" $(RESET);
-	
-	@for dep in $(DEPS_MANDATORY) $(DEPS_BONUS); do \
-		sleep 0.1; \
-	done
-	@echo $(RED)"All dependency files of libft have been deleted. ✓" $(RESET);
+	@if [ -d $(OBJ_DIR) ]; then \
+		$(RM) $(OBJ_DIR); \
+		echo $(RED)"All object files of libft have been deleted. ✓" $(RESET); \
+	fi
+	@if [ -d $(DEP_DIR) ]; then \
+		$(RM) $(DEP_DIR); \
+		echo $(RED)"All dependency files of libft have been deleted. ✓" $(RESET); \
+	fi
+
 
 fclean: clean
-	@$(RM) $(NAME)
-	@echo $(RED)$(NAME)" has been deleted. ✓" $(RESET)
+	@if [ -f $(NAME) ]; then \
+		$(RM) $(NAME); \
+		echo $(RED)$(NAME)" has been deleted. ✓" $(RESET); \
+	fi
 
 re: fclean all
 reB: fclean bonus
