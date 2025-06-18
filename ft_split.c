@@ -69,25 +69,33 @@ int	word_cpy(const char *s, char c, char **result, int word_cnt)
 	int		in_word;
 
 	in_word = 0;
-	while (word_cnt > 0)
+	while (*s)
 	{
-		if (*s == c || *s == '\0')
+		if (*s == c)
 		{
-			if (!word_allocate(result, start, (char *)s - start))
-				return (0);
-			result++;
-			in_word = 0;
-			word_cnt--;
+			if (in_word)
+			{
+				if (!word_allocate(result++, start, s - start))
+					return (0);
+				word_cnt--;
+				in_word = 0;
+			}
 		}
-		else if (*s != c && !in_word)
+		else if (!in_word)
 		{
 			start = (char *)s;
 			in_word = 1;
 		}
 		s++;
 	}
+	if (in_word && word_cnt > 0)
+	{
+		if (!word_allocate(result, start, s - start))
+			return (0);
+	}
 	return (1);
 }
+
 
 int	word_allocate(char **result, char *start, int word_len)
 {
