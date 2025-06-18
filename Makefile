@@ -47,7 +47,7 @@ all: $(OBJS_MANDATORY)
 
 bonus: $(OBJS_BONUS)
 	@$(AR) $(NAME) $(OBJS_BONUS)
-	@echo $(GREEN)"creating" $(NAME) "✓" $(RESET)
+	@echo $(GREEN)"creating bonus" $(NAME) "✓" $(RESET)
 
 $(OBJ_DIR)/%.o: %.c $(HEADER) | $(OBJ_DIR) $(DEP_DIR)
 	@$(CC) $(CFLAGS) -c -MMD $< -o $@
