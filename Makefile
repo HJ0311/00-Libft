@@ -15,7 +15,6 @@ OBJ_DIR := obj
 DEP_DIR := dep
 
 #Header
-
 HEADER = libft.h
 
 SRCS_MANDATORY := $(filter-out %_bonus.c, $(wildcard *.c))
